@@ -15,6 +15,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 
 #skillset dictionary
+#thanks to 'https://github.com/yuanyuanshi/Data_Skills' for this dictionary idea
 program_languages=['R','Python','Java','C++','C','C#','Ruby','Perl','Matlab','Javascript','Scala','PHP','Julia']
 analysis_software=['Excel','Tableau','D3.js','SAS','SPSS','SAAS','Pandas','Numpy','SciPy','SPS','Spotfire','Scikits-learn','Splunk','H2O']
 bigdata_tool=['Hadoop','MapReduce','Spark','Pig','Apache Hive','HiveQL','Shark','Oozie','Zookeeper','Flume','Apache Mahout']
@@ -22,6 +23,7 @@ databases=['SQL','NoSQL','HBase','Cassandra','MongoDB','MySQL','MSSQL','PostgreS
 overall_dict = program_languages + analysis_software + bigdata_tool + databases
 
 #indeed webcrawler
+#thanks to 'https://medium.com/@msalmon00/web-scraping-job-postings-from-indeed-96bd588dcb4b' for this fuction
 max_results_per_city = 20
 city_set = ['New+York', 'San+Francisco']
 job_post=[] 
@@ -37,6 +39,7 @@ for city in city_set :
             
 words=[]
 
+#extracting words that are not stopwords
 for text in job_post :
     tokenizer = RegexpTokenizer(r'\w+')
     text_no_punc = tokenizer.tokenize(text)
@@ -46,7 +49,7 @@ for text in job_post :
 ntext=sum(words,[])
 keywords=[str(word) for word in ntext if word in overall_dict]
 
-#top 5 keywords analysis
+#top 5 keywords analysis by counting words that match skillset dictionary
 from collections import Counter
 word_count_dict = Counter(keywords)
 word_count_dict.most_common(5)
