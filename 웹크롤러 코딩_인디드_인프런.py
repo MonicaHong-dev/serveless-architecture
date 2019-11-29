@@ -55,8 +55,7 @@ inflearn_key=list(tmp_key.keys())
 inflearn_key
 
 
-# In[2]:
-
+# inflearn webcrawler + result print
 
 skills = inflearn_key
 for skill in skills :
@@ -75,8 +74,6 @@ for skill in skills :
         
     print("===========================================")
 
-
-# In[ ]:
 
 
 
